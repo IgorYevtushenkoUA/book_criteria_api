@@ -24,6 +24,7 @@ insert into "genres" (id, name) values (3,'genre3');
 
 -- book_has_authors
 insert into "book_has_authors"(book_id, author_id) values (1,1);
+insert into "book_has_authors"(book_id, author_id) values (1,2);
 insert into "book_has_authors"(book_id, author_id) values (2,1);
 insert into "book_has_authors"(book_id, author_id) values (2,2);
 insert into "book_has_authors"(book_id, author_id) values (2,3);
