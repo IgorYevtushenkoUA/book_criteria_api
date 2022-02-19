@@ -1,0 +1,6 @@
+https://www.initgrep.com/posts/java/jpa/select-values-in-criteria-queries (good examples of many-to-many)
+https://www.programcreek.com/java-api-examples/?api=javax.persistence.criteria.ListJoin
+
+
+
+

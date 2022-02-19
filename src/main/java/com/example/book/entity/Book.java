@@ -13,7 +13,6 @@ import java.util.List;
 @Table(name = "books")
 @Getter
 @Setter
-@ToString
 public class Book implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -40,18 +39,29 @@ public class Book implements Serializable {
     @ManyToMany
     @ToString.Exclude
     @JoinTable(
-            name="book_has_genres",
-            joinColumns = @JoinColumn(name="book_id"),
-            inverseJoinColumns = @JoinColumn(name="genre_id"))
+            name = "book_has_genres",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "genre_id"))
     private List<Genre> genres;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @ToString.Exclude
     @JoinTable(
-            name="book_has_authors",
-            joinColumns = @JoinColumn(name="book_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name="author_id", referencedColumnName = "id"))
+            name = "book_has_authors",
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id", referencedColumnName = "id"))
     private List<Author> authors;
 
-
+    @Override
+    public String toString() {
+        return "Book{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", pageNumber=" + pageNumber +
+                ", publisher='" + publisher + '\'' +
+                ", cover='" + cover + '\'' +
+                ", price=" + price +
+                "}\n";
+    }
 }

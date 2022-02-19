@@ -24,7 +24,7 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> findAuthorBook(@Param("id") Integer id);
 
 
-//    хз ,  це точно не найкращий запит, даремно гулю прогулював
+    //    хз ,  це точно не найкращий запит, даремно гулю прогулював
 //    todo why we need only long in amountOfAuthors ?
 //    всі книжки групи авторів,
     @Query("select distinct b from Book b " +
@@ -50,4 +50,11 @@ public interface BookRepository extends JpaRepository<Book, Integer> {
     List<Book> findByPrice(@Param("price") double price);
 
 
+    // find text from description, book name, author name, publisher
+    @Query("select distinct b from Book b inner join b.authors a " +
+            "where lower(b.description) like concat('%', lower(:text), '%') " +
+            "or lower(b.name) like concat('%', lower(:text), '%') " +
+            "or lower(b.publisher) like concat('%', lower(:text), '%') " +
+            "or lower(a.name) like concat('%', lower(:text), '%') ")
+    List<Book> findBookByTextInDescriptionOrNameOrAuthorOrPublisher(@Param("text") String text);
 }

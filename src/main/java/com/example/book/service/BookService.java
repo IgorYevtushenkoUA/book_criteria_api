@@ -20,9 +20,9 @@ public class BookService {
     }
 
     public List<Book> findGroupAuthorsBook(List<Integer> ids) {
-        return bookRepository.findGroupAuthorsBook(ids,  ids.size());
+        return bookRepository.findGroupAuthorsBook(ids, ids.size());
     }
-//
+
     public List<Book> findAuthorsBook(List<Integer> ids) {
         return bookRepository.findAuthorsBook(ids);
     }
@@ -35,4 +35,7 @@ public class BookService {
         return bookRepository.findByPrice(price);
     }
 
+    public List<Book> findBookByTextInDescriptionOrNameOrAuthorOrPublisher(String text){
+        return bookRepository.findBookByTextInDescriptionOrNameOrAuthorOrPublisher(text);
+    }
 }
